@@ -4,37 +4,24 @@
   
   
   <entry>
-    <title>Hello World</title>
-    <link href="/61011741.github.io/2022/08/09/hello-world/"/>
-    <url>/61011741.github.io/2022/08/09/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title></title>
-    <link href="/61011741.github.io/2021/07/15/blog1/"/>
-    <url>/61011741.github.io/2021/07/15/blog1/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>嗨 blog</title>
     <link href="/61011741.github.io/2021/07/10/title/"/>
     <url>/61011741.github.io/2021/07/10/title/</url>
     
     <content type="html"><![CDATA[<h3 id="HELLO！-blog"><a href="#HELLO！-blog" class="headerlink" title="HELLO！ blog"></a>HELLO！ blog</h3><h1 id="我的第一个blog"><a href="#我的第一个blog" class="headerlink" title="我的第一个blog"></a>我的第一个blog</h1>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>简单聊一聊Spring/SpringBuilder/SpringBuffer</title>
+    <link href="/61011741.github.io/2020/07/15/blog1/"/>
+    <url>/61011741.github.io/2020/07/15/blog1/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h3><p>1.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。<br>2.StringBuffer StringBuilder都是可变的字符串<br>3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以它不安全，但是在单线程下，它不用每次判断锁，因此效率较高。  </p><h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><p><strong>String</strong> 对象不是一旦创建了就不改变了吗 ？ 那它常用的修改方法的值是怎么样实现的呢？<br>拥有方法如下： substring(int,int) 字符串截取、split(String,int) 字符串分割、toLowerCase() 字符串所有字母小写。<br>通过查看subString底层的源码可知：其实是重新new了<strong>一个新的对象</strong>来接受字符串，并不是重新修改了原来的值，所以本质上原来的String对象<strong>并没有发生改变</strong></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">substring</span><span class="hljs-params">(<span class="hljs-type">int</span> beginIndex, <span class="hljs-type">int</span> endIndex)</span> &#123;<br>    <span class="hljs-keyword">if</span> (beginIndex &lt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(beginIndex);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (endIndex &gt; value.length) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(endIndex);<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">subLen</span> <span class="hljs-operator">=</span> endIndex - beginIndex;<br>    <span class="hljs-keyword">if</span> (subLen &lt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(subLen);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ((beginIndex == <span class="hljs-number">0</span>) &amp;&amp; (endIndex == value.length)) ? <span class="hljs-built_in">this</span><br>            : <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(value, beginIndex, subLen);<br>&#125;<br></code></pre></td></tr></table></figure><h3 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h3><p><strong>StringBulider</strong>为什么又可变了呢？其实可以把他看作一个容器。<br>Stringbulid 和String可以相互转换。String -&gt; StringBuilder:可以使用StringBuilder的构造方法 <code>StringBuilder(String str)</code>构造一个字符串生成器，并初始化为指定的字符串内容。</p><p>StringBuilder -&gt; String:可以使用StringBuilder中的toString方法 <code>public String toString():</code>将当前StringBuilder对象转换为String对象。<br>Demo:</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//String -&gt; StringBuilder</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Hello&quot;</span>;<br>        System.out.println(str);<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">stringBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>(str);<br>        stringBuilder.append(<span class="hljs-string">&quot;World&quot;</span>);<br>        System.out.println(stringBuilder);<br>        <span class="hljs-comment">//StringBuilder -&gt; String</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> stringBuilder.toString();<br>        System.out.println(string);<br>    &#125;<br></code></pre></td></tr></table></figure><h3 id="1-4"><a href="#1-4" class="headerlink" title="1.4"></a>1.4</h3><p><strong>StringBuffer</strong> StringBulider一样同其实也可以被看作一个容器。字符串类可变，StringBuffer 可以通过 toString()方法转换成 String<br>String 可以通过 StringBuffer 的构造方法，转换成 StringBuffer。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>().toString();<br><span class="hljs-type">StringBuffer</span> <span class="hljs-variable">stringBuffer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>());<br></code></pre></td></tr></table></figure>]]></content>
     
     
     
