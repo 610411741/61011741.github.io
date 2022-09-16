@@ -16,22 +16,22 @@
   <meta name="author" content="Tian Lin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.11.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。2.StringBuffer StringBuilder都是可变的字符串3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以">
+    <meta name="description" content="今天偶然写代码的时候，看见项目中有waring的提示，如下：  12@Autowireprivate JdbcTemplate jdbcTemplate;  提示的警告信息：“Field injection is not recommended Inspection info: Spring Team recommends: “Always use constructor based depen">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单聊一聊Spring&#x2F;SpringBuilder&#x2F;SpringBuffer">
-<meta property="og:url" content="https://github.com/610411741/61011741.github.io/2020/07/15/blog1/index.html">
+<meta property="og:title" content="Autowired 和@Resource 新理解">
+<meta property="og:url" content="https://github.com/610411741/61011741.github.io/2020/09/08/blog7/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.11.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。2.StringBuffer StringBuilder都是可变的字符串3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以">
+<meta property="og:description" content="今天偶然写代码的时候，看见项目中有waring的提示，如下：  12@Autowireprivate JdbcTemplate jdbcTemplate;  提示的警告信息：“Field injection is not recommended Inspection info: Spring Team recommends: “Always use constructor based depen">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-15T07:35:42.000Z">
-<meta property="article:modified_time" content="2022-09-08T08:52:35.002Z">
+<meta property="article:published_time" content="2020-09-08T12:35:28.000Z">
+<meta property="article:modified_time" content="2022-09-15T15:56:42.475Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="java Spring">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>简单聊一聊Spring/SpringBuilder/SpringBuffer - Hexo</title>
+  <title>Autowired 和@Resource 新理解 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -160,7 +160,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="简单聊一聊Spring/SpringBuilder/SpringBuffer"></span>
+            <span id="subtitle" data-typed-text="Autowired 和@Resource 新理解"></span>
           
         </div>
 
@@ -171,8 +171,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-07-15 15:35" pubdate>
-          July 15, 2020 pm
+        <time datetime="2020-09-08 20:35" pubdate>
+          September 8, 2020 pm
         </time>
       </span>
     
@@ -183,7 +183,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k words
+          1.5k words
         
       </span>
     
@@ -194,7 +194,7 @@
         
         
         
-          15 mins
+          13 mins
         
       </span>
     
@@ -232,19 +232,41 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">简单聊一聊Spring/SpringBuilder/SpringBuffer</h1>
+            <h1 style="display: none">Autowired 和@Resource 新理解</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h3><p>1.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。<br>2.StringBuffer StringBuilder都是可变的字符串<br>3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以它不安全，但是在单线程下，它不用每次判断锁，因此效率较高。  </p>
-<h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><p><strong>String</strong> 对象不是一旦创建了就不改变了吗 ？ 那它常用的修改方法的值是怎么样实现的呢？<br>拥有方法如下： substring(int,int) 字符串截取、split(String,int) 字符串分割、toLowerCase() 字符串所有字母小写。<br>通过查看subString底层的源码可知：其实是重新new了<strong>一个新的对象</strong>来接受字符串，并不是重新修改了原来的值，所以本质上原来的String对象<strong>并没有发生改变</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">substring</span><span class="hljs-params">(<span class="hljs-type">int</span> beginIndex, <span class="hljs-type">int</span> endIndex)</span> &#123;<br>    <span class="hljs-keyword">if</span> (beginIndex &lt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(beginIndex);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (endIndex &gt; value.length) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(endIndex);<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">subLen</span> <span class="hljs-operator">=</span> endIndex - beginIndex;<br>    <span class="hljs-keyword">if</span> (subLen &lt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(subLen);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ((beginIndex == <span class="hljs-number">0</span>) &amp;&amp; (endIndex == value.length)) ? <span class="hljs-built_in">this</span><br>            : <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(value, beginIndex, subLen);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h3><p><strong>StringBulider</strong>为什么又可变了呢？其实可以把他看作一个容器。<br>Stringbulid 和String可以相互转换。String -&gt; StringBuilder:可以使用StringBuilder的构造方法 <code>StringBuilder(String str)</code>构造一个字符串生成器，并初始化为指定的字符串内容。</p>
-<p>StringBuilder -&gt; String:可以使用StringBuilder中的toString方法 <code>public String toString():</code>将当前StringBuilder对象转换为String对象。<br>Demo:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//String -&gt; StringBuilder</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Hello&quot;</span>;<br>        System.out.println(str);<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">stringBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>(str);<br>        stringBuilder.append(<span class="hljs-string">&quot;World&quot;</span>);<br>        System.out.println(stringBuilder);<br>        <span class="hljs-comment">//StringBuilder -&gt; String</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> stringBuilder.toString();<br>        System.out.println(string);<br>    &#125;<br></code></pre></td></tr></table></figure>
-<h3 id="1-4"><a href="#1-4" class="headerlink" title="1.4"></a>1.4</h3><p><strong>StringBuffer</strong> StringBulider一样同其实也可以被看作一个容器。字符串类可变，StringBuffer 可以通过 toString()方法转换成 String<br>String 可以通过 StringBuffer 的构造方法，转换成 StringBuffer。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>().toString();<br><span class="hljs-type">StringBuffer</span> <span class="hljs-variable">stringBuffer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>());<br></code></pre></td></tr></table></figure>
+                <blockquote>
+<p>今天偶然写代码的时候，看见项目中有waring的提示，如下：</p>
+</blockquote>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs aspectj"><span class="hljs-meta">@Autowire</span><br><span class="hljs-keyword">private</span> JdbcTemplate jdbcTemplate; <br></code></pre></td></tr></table></figure>
+<p>提示的警告信息：<br>“Field injection is not recommended Inspection info: Spring Team recommends: “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.<br>大概意思为注入方式不推荐。</p>
+<p>其实注入方式就几种：</p>
+<ul>
+<li>基于Setter的依赖注入<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"> <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">UserServiceImpl</span> <span class="hljs-symbol">implents</span> <span class="hljs-symbol">UserService</span>&#123;<br>    <span class="hljs-keyword">private</span> UserDao userDao;<br><br>    @Autowire<br>    <span class="hljs-keyword">public</span> serUserDao(UserDao userDao)&#123;<br>        <span class="hljs-keyword">this</span>.userDao = userDao;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>基于构造函数的依赖注入<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">UserServiceImpl</span> <span class="hljs-symbol">implents</span> <span class="hljs-symbol">UserService</span>&#123;<br>    <span class="hljs-keyword">private</span> UserDao userDao;<br><br>    @Autowire<br>    <span class="hljs-keyword">public</span> UserServiceImpl(UserDao userDao)&#123;<br>        <span class="hljs-keyword">this</span>.userDao = userDao;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li>基于字段的依赖注入<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"> <span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">UserServiceImpl</span> <span class="hljs-symbol">implents</span> <span class="hljs-symbol">UserService</span>&#123;<br>    @Autowire<br>    <span class="hljs-keyword">private</span> UserDao userDao;<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>我们在开发中基本上是用字段依赖注入，因为简便明了。但其实这样用不好，sping不建议。<br>Field注入的缺点</p>
+</blockquote>
+</li>
+<li>不能像构造器那样注入不可变的对象</li>
+<li>依赖对外部不可见，外界可以看到构造器和setter，但无法看到私有字段，自然无法了解所需依赖</li>
+<li>会导致组件与IoC容器紧耦合（这是最重要的原因，离开了IoC容器去使用组件，在注入依赖时就会十分困难）</li>
+<li>依赖过多时不够明显，比如我需要10个依赖，用构造器注入就会显得庞大，这时候应该考虑一下此组件是不是违反了单一职责原则</li>
+</ul>
+<blockquote>
+<p>@Autowired VS @Resource<br>事实上，他们的基本功能都是通过注解实现依赖注入，只不过@Autowired是Spring定义的，而@Resource是JSR-250定义的。大致功能基本相同，但是还有一些细节不同：</p>
+</blockquote>
+<blockquote>
+<p>依赖识别方式：@Autowired默认是byType可以使用@Qualifier指定Name，@Resource默认ByName如果找不到则ByType<br>适用对象：@Autowired可以对构造器、方法、参数、字段使用，@Resource只能对方法、字段使用<br>提供方：@Autowired是Spring提供的，@Resource是JSR-250提供的<br>各种DI方式的优缺点<br>参考Spring官方文档，建议了如下的使用场景：</p>
+</blockquote>
+<blockquote>
+<p>构造函数注入：强依赖性（即必须使用此依赖），不变性（各依赖不会经常变动）<br>Setter注入：可选（没有此依赖也可以工作），可变（依赖会经常变动）<br>Field注入：大多数情况下尽量少使用字段注入，一定要使用的话，@Resource相对@Autowired对IoC容器的耦合更低</p>
+</blockquote>
+<p>那么问题来了，为什么IDEA只对@Autowired警告，却对@Resource视而不见呢？<br>@Autowired是Spring提供的，而@Resource是JSR-250提供的，它是Java标准。</p>
+
                 
               </div>
             
@@ -256,7 +278,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/61011741.github.io/tags/java/">#java</a>
+        <a href="/61011741.github.io/tags/java-Spring/">#java Spring</a>
       
     </div>
   
@@ -268,8 +290,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>简单聊一聊Spring/SpringBuilder/SpringBuffer</div>
-      <div>https://github.com/610411741/61011741.github.io/2020/07/15/blog1/</div>
+      <div>Autowired 和@Resource 新理解</div>
+      <div>https://github.com/610411741/61011741.github.io/2020/09/08/blog7/</div>
     </div>
     <div class="license-meta">
       
@@ -281,7 +303,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 15, 2020</div>
+          <div>September 8, 2020</div>
         </div>
       
       
@@ -311,9 +333,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/61011741.github.io/2020/07/20/bLog2/" title="Spring 笔记">
+                      <a href="/61011741.github.io/2020/10/15/blog4/" title="Spring Boot的@RequestParam @RequestBody @PathVariable 等参数绑定注解">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring 笔记</span>
+                        <span class="hidden-mobile">Spring Boot的@RequestParam @RequestBody @PathVariable 等参数绑定注解</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -321,8 +343,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/61011741.github.io/2020/07/10/title/" title="关于@JsonFormat和@DataTimeFormat注解的日志相关问题">
-                        <span class="hidden-mobile">关于@JsonFormat和@DataTimeFormat注解的日志相关问题</span>
+                      <a href="/61011741.github.io/2020/09/06/Blog3/" title="Spring 中的对象">
+                        <span class="hidden-mobile">Spring 中的对象</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

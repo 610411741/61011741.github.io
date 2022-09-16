@@ -13,24 +13,27 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Tian Lin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="HELLO！ blog我的第一个blog">
+    <meta name="description" content="什么是DockerDocker简单来说就是一个开源的应用容器引擎，可以让程序开发人员打包应用及依赖包到一个可移植的容器中，再发布到Linux的机器上，也可以实现虚拟化。简而言之，就是一个便捷的应用容器。 安装Docker 在mac平台下，去下载一个dmg的安装文件。下载好了之后，双击，然后拖入就可以了，windows应该也是类似的。链接如下： https:&#x2F;&#x2F;hub.docker.com&#x2F;sear">
 <meta property="og:type" content="article">
-<meta property="og:title" content="嗨 blog">
-<meta property="og:url" content="https://github.com/610411741/61011741.github.io/2021/07/10/title/index.html">
+<meta property="og:title" content="DocKer搭建本地开发环境">
+<meta property="og:url" content="https://github.com/610411741/61011741.github.io/2021/05/15/blog8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="HELLO！ blog我的第一个blog">
+<meta property="og:description" content="什么是DockerDocker简单来说就是一个开源的应用容器引擎，可以让程序开发人员打包应用及依赖包到一个可移植的容器中，再发布到Linux的机器上，也可以实现虚拟化。简而言之，就是一个便捷的应用容器。 安装Docker 在mac平台下，去下载一个dmg的安装文件。下载好了之后，双击，然后拖入就可以了，windows应该也是类似的。链接如下： https:&#x2F;&#x2F;hub.docker.com&#x2F;sear">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-10T10:16:11.000Z">
-<meta property="article:modified_time" content="2022-08-29T13:44:10.147Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/9290221335b6c57c20060d578f40118c.jpeg">
+<meta property="article:published_time" content="2021-05-15T14:18:38.000Z">
+<meta property="article:modified_time" content="2022-09-15T09:16:51.381Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="java docker">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/img_convert/9290221335b6c57c20060d578f40118c.jpeg">
   
   
   
-  <title>嗨 blog - Hexo</title>
+  <title>DocKer搭建本地开发环境 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -159,7 +162,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="嗨 blog"></span>
+            <span id="subtitle" data-typed-text="DocKer搭建本地开发环境"></span>
           
         </div>
 
@@ -170,8 +173,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2021-07-10 18:16" pubdate>
-          July 10, 2021 pm
+        <time datetime="2021-05-15 22:18" pubdate>
+          May 15, 2021 pm
         </time>
       </span>
     
@@ -182,7 +185,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          19 words
+          740 words
         
       </span>
     
@@ -193,7 +196,7 @@
         
         
         
-          1 mins
+          7 mins
         
       </span>
     
@@ -231,12 +234,44 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">嗨 blog</h1>
+            <h1 style="display: none">DocKer搭建本地开发环境</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="HELLO！-blog"><a href="#HELLO！-blog" class="headerlink" title="HELLO！ blog"></a>HELLO！ blog</h3><h1 id="我的第一个blog"><a href="#我的第一个blog" class="headerlink" title="我的第一个blog"></a>我的第一个blog</h1>
+                <h3 id="什么是Docker"><a href="#什么是Docker" class="headerlink" title="什么是Docker"></a>什么是Docker</h3><p>Docker简单来说就是一个开源的应用容器引擎，可以让程序开发人员打包应用及依赖包到一个可移植的容器中，再发布到Linux的机器上，也可以实现虚拟化。简而言之，就是一个便捷的应用容器。</p>
+<h3 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h3><ul>
+<li>在mac平台下，去下载一个dmg的安装文件。下载好了之后，双击，然后拖入就可以了，windows应该也是类似的。<br>链接如下：<blockquote>
+<p><a target="_blank" rel="noopener" href="https://hub.docker.com/search/?type=edition&amp;offering=community&amp;q=">https://hub.docker.com/search/?type=edition&amp;offering=community&amp;q=</a></p>
+</blockquote>
+</li>
+</ul>
+<p>查看docker 版本信息，如果出现版本信息则表示安装成功。</p>
+<ul>
+<li><p> 安装docker-composer<br>链接如下：</p>
+<blockquote>
+<p><a href="https://github.com/docker/compose/releases">https://github.com/docker/compose/releases</a></p>
+</blockquote>
+</li>
+<li><p>安装完成后输入命令检查</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim">  ➜  ~ docker-compose <span class="hljs-keyword">version</span><br>docker-compose <span class="hljs-keyword">version</span> <span class="hljs-number">1.23</span>.<span class="hljs-number">2</span>, build <span class="hljs-number">1110</span>ad01<br>docker-<span class="hljs-keyword">py</span> <span class="hljs-keyword">version</span>: <span class="hljs-number">3.6</span>.<span class="hljs-number">0</span><br>CPython <span class="hljs-keyword">version</span>: <span class="hljs-number">3.6</span>.<span class="hljs-number">6</span><br></code></pre></td></tr></table></figure></li>
+<li><p>下载laradock到本地</p>
+<blockquote>
+<p><a href="https://github.com/laradock/laradock">https://github.com/laradock/laradock</a> </p>
+</blockquote>
+</li>
+<li><p>配置env文件<br>cp env- example env,看需求修改远程映射路径。</p>
+</li>
+<li><p>执行命令 docker-compose up -d nginx mysql 运行</p>
+<p>配置项目信息：<br>DB_CONNECTION=mysql<br>DB_HOST=mysql<br>DB_PORT=3306<br>DB_DATABASE=blog<br>DB_USERNAME=root<br>DB_PASSWORD=tl123456</p>
+</li>
+</ul>
+<p><strong>注意，数据库主机必须得是别名</strong></p>
+<ul>
+<li>配置宿主机的 host vim /etc/hosts（可以加入自己设置的虚拟域名）</li>
+</ul>
+<p> 访问：url<br> 结果：<br> <img src="https://img-blog.csdnimg.cn/img_convert/9290221335b6c57c20060d578f40118c.jpeg" srcset="/61011741.github.io/img/loading.gif" lazyload alt="图片显示"></p>
+
                 
               </div>
             
@@ -244,6 +279,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/61011741.github.io/tags/java-docker/">#java docker</a>
+      
+    </div>
   
 </div>
 
@@ -253,20 +295,20 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>嗨 blog</div>
-      <div>https://github.com/610411741/61011741.github.io/2021/07/10/title/</div>
+      <div>DocKer搭建本地开发环境</div>
+      <div>https://github.com/610411741/61011741.github.io/2021/05/15/blog8/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
           <div>Author</div>
-          <div>John Doe</div>
+          <div>Tian Lin</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 10, 2021</div>
+          <div>May 15, 2021</div>
         </div>
       
       
@@ -296,12 +338,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/61011741.github.io/2021/08/15/blog10/" title="Redis淘汰机制">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Redis淘汰机制</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/61011741.github.io/2020/07/15/blog1/" title="简单聊一聊Spring/SpringBuilder/SpringBuffer">
-                        <span class="hidden-mobile">简单聊一聊Spring/SpringBuilder/SpringBuffer</span>
+                      <a href="/61011741.github.io/2020/11/08/blog6/" title="简单聊一聊单例模式">
+                        <span class="hidden-mobile">简单聊一聊单例模式</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

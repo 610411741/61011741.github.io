@@ -16,22 +16,22 @@
   <meta name="author" content="Tian Lin">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.11.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。2.StringBuffer StringBuilder都是可变的字符串3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以">
+    <meta name="description" content="什么是EurekaEureka是SpringCloud的核心模块之一，Eureka是一个基于RestFul的服务，用于定位服务，以实现云端中间层服务发现和故障转移，服务注册与发现对与微服务来说是非常重要的，有了服务发现与注册，只需要使用服务的标识符，就可以访问到服务，而不需要修改服务调用的配置文件了，功能类十余Dubbo的注册中心，比如Zookeepe.  Eureka的相关注解： @Enable">
 <meta property="og:type" content="article">
-<meta property="og:title" content="简单聊一聊Spring&#x2F;SpringBuilder&#x2F;SpringBuffer">
-<meta property="og:url" content="https://github.com/610411741/61011741.github.io/2020/07/15/blog1/index.html">
+<meta property="og:title" content="SpringCloud注册中心 Eureka常用的注解">
+<meta property="og:url" content="https://github.com/610411741/61011741.github.io/2020/10/25/Blog5/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.11.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。2.StringBuffer StringBuilder都是可变的字符串3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以">
+<meta property="og:description" content="什么是EurekaEureka是SpringCloud的核心模块之一，Eureka是一个基于RestFul的服务，用于定位服务，以实现云端中间层服务发现和故障转移，服务注册与发现对与微服务来说是非常重要的，有了服务发现与注册，只需要使用服务的标识符，就可以访问到服务，而不需要修改服务调用的配置文件了，功能类十余Dubbo的注册中心，比如Zookeepe.  Eureka的相关注解： @Enable">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-15T07:35:42.000Z">
-<meta property="article:modified_time" content="2022-09-08T08:52:35.002Z">
+<meta property="article:published_time" content="2020-10-25T04:11:10.000Z">
+<meta property="article:modified_time" content="2022-09-15T07:55:51.780Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="java">
+<meta property="article:tag" content="java SpinrgCloud">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>简单聊一聊Spring/SpringBuilder/SpringBuffer - Hexo</title>
+  <title>SpringCloud注册中心 Eureka常用的注解 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -160,7 +160,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="简单聊一聊Spring/SpringBuilder/SpringBuffer"></span>
+            <span id="subtitle" data-typed-text="SpringCloud注册中心 Eureka常用的注解"></span>
           
         </div>
 
@@ -171,8 +171,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2020-07-15 15:35" pubdate>
-          July 15, 2020 pm
+        <time datetime="2020-10-25 12:11" pubdate>
+          October 25, 2020 pm
         </time>
       </span>
     
@@ -183,7 +183,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k words
+          928 words
         
       </span>
     
@@ -194,7 +194,7 @@
         
         
         
-          15 mins
+          8 mins
         
       </span>
     
@@ -232,19 +232,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">简单聊一聊Spring/SpringBuilder/SpringBuffer</h1>
+            <h1 style="display: none">SpringCloud注册中心 Eureka常用的注解</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="1-1"><a href="#1-1" class="headerlink" title="1.1"></a>1.1</h3><p>1.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。<br>2.StringBuffer StringBuilder都是可变的字符串<br>3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以它不安全，但是在单线程下，它不用每次判断锁，因此效率较高。  </p>
-<h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><p><strong>String</strong> 对象不是一旦创建了就不改变了吗 ？ 那它常用的修改方法的值是怎么样实现的呢？<br>拥有方法如下： substring(int,int) 字符串截取、split(String,int) 字符串分割、toLowerCase() 字符串所有字母小写。<br>通过查看subString底层的源码可知：其实是重新new了<strong>一个新的对象</strong>来接受字符串，并不是重新修改了原来的值，所以本质上原来的String对象<strong>并没有发生改变</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> String <span class="hljs-title function_">substring</span><span class="hljs-params">(<span class="hljs-type">int</span> beginIndex, <span class="hljs-type">int</span> endIndex)</span> &#123;<br>    <span class="hljs-keyword">if</span> (beginIndex &lt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(beginIndex);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (endIndex &gt; value.length) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(endIndex);<br>    &#125;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">subLen</span> <span class="hljs-operator">=</span> endIndex - beginIndex;<br>    <span class="hljs-keyword">if</span> (subLen &lt; <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringIndexOutOfBoundsException</span>(subLen);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ((beginIndex == <span class="hljs-number">0</span>) &amp;&amp; (endIndex == value.length)) ? <span class="hljs-built_in">this</span><br>            : <span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>(value, beginIndex, subLen);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="1-3"><a href="#1-3" class="headerlink" title="1.3"></a>1.3</h3><p><strong>StringBulider</strong>为什么又可变了呢？其实可以把他看作一个容器。<br>Stringbulid 和String可以相互转换。String -&gt; StringBuilder:可以使用StringBuilder的构造方法 <code>StringBuilder(String str)</code>构造一个字符串生成器，并初始化为指定的字符串内容。</p>
-<p>StringBuilder -&gt; String:可以使用StringBuilder中的toString方法 <code>public String toString():</code>将当前StringBuilder对象转换为String对象。<br>Demo:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs JAVA"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//String -&gt; StringBuilder</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;Hello&quot;</span>;<br>        System.out.println(str);<br>        <span class="hljs-type">StringBuilder</span> <span class="hljs-variable">stringBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuilder</span>(str);<br>        stringBuilder.append(<span class="hljs-string">&quot;World&quot;</span>);<br>        System.out.println(stringBuilder);<br>        <span class="hljs-comment">//StringBuilder -&gt; String</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> stringBuilder.toString();<br>        System.out.println(string);<br>    &#125;<br></code></pre></td></tr></table></figure>
-<h3 id="1-4"><a href="#1-4" class="headerlink" title="1.4"></a>1.4</h3><p><strong>StringBuffer</strong> StringBulider一样同其实也可以被看作一个容器。字符串类可变，StringBuffer 可以通过 toString()方法转换成 String<br>String 可以通过 StringBuffer 的构造方法，转换成 StringBuffer。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">String</span> <span class="hljs-variable">string</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>().toString();<br><span class="hljs-type">StringBuffer</span> <span class="hljs-variable">stringBuffer</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">StringBuffer</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">String</span>());<br></code></pre></td></tr></table></figure>
+                <h2 id="什么是Eureka"><a href="#什么是Eureka" class="headerlink" title="什么是Eureka"></a>什么是Eureka</h2><p>Eureka是SpringCloud的核心模块之一，Eureka是一个基于RestFul的服务，用于定位服务，以实现云端中间层服务发现和故障转移，服务注册与发现对与微服务来说是非常重要的，有了服务发现与注册，只需要使用服务的标识符，就可以访问到服务，而不需要修改服务调用的配置文件了，功能类十余Dubbo的注册中心，比如Zookeepe. </p>
+<h2 id="Eureka的相关注解："><a href="#Eureka的相关注解：" class="headerlink" title="Eureka的相关注解："></a>Eureka的相关注解：</h2><ul>
+<li>@EnableEurekaClient</li>
+<li>@EnableDiscoveryClient<br>两个注解的异同及使用场景如下：<br>@EnableDiscoveryClient和@EnableEurekaClient<br>表示开启eureka客服端，都是能够让注册中心能够发现，扫描到改服务。<br>上面两个注解都是用在应用的启动类上面，声明这是一个Eureka Client ，现在说明两个注解的区别。<br>不同之处就是  @EnableEurekaClient 只适用于Eureka作为注册中心，而@EnableDiscoveryClient 可以是其他注册中心。</li>
+</ul>
+<p>用法如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-meta">@EnableDiscoveryClient</span> <span class="hljs-comment">// 服务注册发现</span><br><span class="hljs-comment">// @EnableEurekaClient</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(DemoApplication.class);<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2 id="EnableEurekaServer"><a href="#EnableEurekaServer" class="headerlink" title="@EnableEurekaServer"></a>@EnableEurekaServer</h2><p>开启eureka注册中心，为eureka server服务端， 可以接受其他的服务注册</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-comment">// 开启 eureka server 服务端，接受别人注册</span><br><span class="hljs-meta">@EnableEurekaServer</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DemoApplication</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        SpringApplication.run(DemoApplication.class);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -256,7 +258,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/61011741.github.io/tags/java/">#java</a>
+        <a href="/61011741.github.io/tags/java-SpinrgCloud/">#java SpinrgCloud</a>
       
     </div>
   
@@ -268,8 +270,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>简单聊一聊Spring/SpringBuilder/SpringBuffer</div>
-      <div>https://github.com/610411741/61011741.github.io/2020/07/15/blog1/</div>
+      <div>SpringCloud注册中心 Eureka常用的注解</div>
+      <div>https://github.com/610411741/61011741.github.io/2020/10/25/Blog5/</div>
     </div>
     <div class="license-meta">
       
@@ -281,7 +283,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>July 15, 2020</div>
+          <div>October 25, 2020</div>
         </div>
       
       
@@ -311,9 +313,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/61011741.github.io/2020/07/20/bLog2/" title="Spring 笔记">
+                      <a href="/61011741.github.io/2020/11/08/blog6/" title="简单聊一聊单例模式">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Spring 笔记</span>
+                        <span class="hidden-mobile">简单聊一聊单例模式</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -321,8 +323,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/61011741.github.io/2020/07/10/title/" title="关于@JsonFormat和@DataTimeFormat注解的日志相关问题">
-                        <span class="hidden-mobile">关于@JsonFormat和@DataTimeFormat注解的日志相关问题</span>
+                      <a href="/61011741.github.io/2020/10/15/blog4/" title="Spring Boot的@RequestParam @RequestBody @PathVariable 等参数绑定注解">
+                        <span class="hidden-mobile">Spring Boot的@RequestParam @RequestBody @PathVariable 等参数绑定注解</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

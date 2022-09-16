@@ -187,15 +187,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/61011741.github.io/2021/07/10/title/" target="_self">
-          嗨 blog
+        <a href="/61011741.github.io/2021/12/15/blog12/" target="_self">
+          MyBatis的分页方式
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2021/07/10/title/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2021/12/15/blog12/" target="_self">
         <div>
-          HELLO！ blog我的第一个blog
+          当数据非常多时，不可能一次性显示出来，所以分页是必不可少的功能。这样可以减少服务器压力，提升速度和效率，使页面变得整洁美观 分页原理：    逻辑分页：Mybatis是如何通过我们设置的RowBounds来返回分页结果的原理：首先是将所有结果查询出来，然后通过计算offset和limit，只返回部分结果，操作在内存中进行，所以也叫内存分页。弊端：当数据量大的时候，肯定是不行的物理分页：直接为sql
         </div>
       </a>
 
@@ -203,12 +203,19 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-10 18:16" pubdate>
-              2021-07-10
+            <time datetime="2021-12-15 15:35" pubdate>
+              2021-12-15
             </time>
           </div>
         
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/Mybatis/">#Mybatis</a>
+            
+          </div>
         
       </div>
     </article>
@@ -220,15 +227,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/61011741.github.io/2020/07/15/blog1/" target="_self">
-          简单聊一聊Spring/SpringBuilder/SpringBuffer
+        <a href="/61011741.github.io/2021/10/17/blog11/" target="_self">
+          Redis延迟队列
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2020/07/15/blog1/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2021/10/17/blog11/" target="_self">
         <div>
-          1.11.String 是不可变字符串，每对Spring进行编写后都会产生一个新的字符串对象。2.StringBuffer StringBuilder都是可变的字符串3.StringBuffer StringBuilder在功能以及用法上基本等价。但是StringBuffer中很多办法都用了Synchronized关键字进行修饰，所以线程比较安全，而StringBuilder中并没有用其修饰，所以
+          首先看下以下两种业务情况：  如果有订单一直处于未支付状态时，如何及时的关闭订单，并且退还库存？ 创建新店铺时，很多天未上传商品，系统如何知道该情况，并发送激活短信？上述场景最简单直接的解决方案是定时扫表。我们假设 30分钟未支付则关闭订单、定时任务设置为 5 分钟一次，那么一个订单最晚会在 30分钟关闭。高达 5 分钟的误差是业务难以接受的。另一方面频繁的扫表可能消耗过多数据库资源，影响线上交易
         </div>
       </a>
 
@@ -236,18 +243,351 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2020-07-15 15:35" pubdate>
-              2020-07-15
+            <time datetime="2021-10-17 21:10" pubdate>
+              2021-10-17
             </time>
           </div>
         
         
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/Redis/">#Redis</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2021/08/17/blog9/" target="_self">
+          SpringCloud +jwt 鉴权网关
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2021/08/17/blog9/" target="_self">
+        <div>
+          如今的项目微服务繁多复杂，如果每个微服务都要自己去写一个鉴权，那么代码冗余度非常高，所以我们一般把鉴权操作放到网关Gateway中。 在网关完成url的鉴权（一切的OPTION的请求全部放行，一切不存在的请求都拒绝访问） 将解析后的jwt token当做请求头传递到下游服务中 整合Spring Security Oauth2 Resource Server  前期需要搭建认证服务器以及使用Spri
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-17 15:35" pubdate>
+              2021-08-17
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/SPringCloud/">#SPringCloud</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2021/08/15/blog10/" target="_self">
+          Redis淘汰机制
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2021/08/15/blog10/" target="_self">
+        <div>
+          总所周知，redis是个基于内存的缓存数据库，那再内存没有空间存入新的空间的时候，redis是怎么处理的呢？   答案是此时的redis会执行一些淘汰的策略，把一些垃圾数据给淘汰掉，腾出新的空间。redis6种淘汰策略  1.noeviction(默认策略)：对于写请求不再提供服务，直接返回错误（DEL请求和部分特殊请求除外） 2.allkeys-lru：从所有key中使用LRU算法进行淘汰（L
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-15 21:08" pubdate>
+              2021-08-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/Redis/">#Redis</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2021/05/15/blog8/" target="_self">
+          DocKer搭建本地开发环境
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2021/05/15/blog8/" target="_self">
+        <div>
+          什么是DockerDocker简单来说就是一个开源的应用容器引擎，可以让程序开发人员打包应用及依赖包到一个可移植的容器中，再发布到Linux的机器上，也可以实现虚拟化。简而言之，就是一个便捷的应用容器。 安装Docker 在mac平台下，去下载一个dmg的安装文件。下载好了之后，双击，然后拖入就可以了，windows应该也是类似的。链接如下： https:&#x2F;&#x2F;hub.docker.com&#x2F;sear
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-05-15 22:18" pubdate>
+              2021-05-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/java-docker/">#java docker</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2020/11/08/blog6/" target="_self">
+          简单聊一聊单例模式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2020/11/08/blog6/" target="_self">
+        <div>
+          单例模式介绍： 单例模式的使用： 单例模式，顾名思义，要保证程序中只有这么一个单例，保证仅有一个实例。比如发号器，redis连接对象等   单例模式的分类：1.懒汉模式：简单来说就是懒加载，等到程序需要这个对象的时候再来创建，延迟创建对象。 2.饿汉：提前创建好对象，类加载就会导致该单实例对象被创建。   单例模式的实现步骤：1.私有化构造函数，例必须是一个且唯一，并且必须加上static属性。2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-11-08 20:35" pubdate>
+              2020-11-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/java-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#java 设计模式</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2020/10/25/Blog5/" target="_self">
+          SpringCloud注册中心 Eureka常用的注解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2020/10/25/Blog5/" target="_self">
+        <div>
+          什么是EurekaEureka是SpringCloud的核心模块之一，Eureka是一个基于RestFul的服务，用于定位服务，以实现云端中间层服务发现和故障转移，服务注册与发现对与微服务来说是非常重要的，有了服务发现与注册，只需要使用服务的标识符，就可以访问到服务，而不需要修改服务调用的配置文件了，功能类十余Dubbo的注册中心，比如Zookeepe.  Eureka的相关注解： @Enable
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-25 12:11" pubdate>
+              2020-10-25
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/java-SpinrgCloud/">#java SpinrgCloud</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2020/10/15/blog4/" target="_self">
+          Spring Boot的@RequestParam @RequestBody @PathVariable 等参数绑定注解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2020/10/15/blog4/" target="_self">
+        <div>
+          1: @PathVariable1234567@Controller@RequestMapping(&quot;&#x2F;user&#x2F;&amp;#123;userId&amp;#125;&quot;)public class test &amp;#123;  public void findUser(@PathVariable String userId, Model model) &amp;#123;      &amp;#125;&amp;#125;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-10-15 12:10" pubdate>
+              2020-10-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/java-SpringBoot/">#java SpringBoot</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2020/09/08/blog7/" target="_self">
+          Autowired 和@Resource 新理解
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2020/09/08/blog7/" target="_self">
+        <div>
+          今天偶然写代码的时候，看见项目中有waring的提示，如下：  12@Autowireprivate JdbcTemplate jdbcTemplate;  提示的警告信息：“Field injection is not recommended Inspection info: Spring Team recommends: “Always use constructor based depen
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-08 20:35" pubdate>
+              2020-09-08
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/java-Spring/">#java Spring</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/61011741.github.io/2020/09/06/Blog3/" target="_self">
+          Spring 中的对象
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/61011741.github.io/2020/09/06/Blog3/" target="_self">
+        <div>
+          Spring 为什么被称作是一个容器？它里面的对象是谁创建的？以及相关属性是由谁设置的？ 我们举个例子来简单说明。编写一个Student的实体类： class Student &amp;#123;1234567891011   private String name;   public String getName() &amp;#123;       return name;  &amp;#125;   public
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2020-09-06 12:10" pubdate>
+              2020-09-06
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/61011741.github.io/tags/java-Spring/">#java Spring</a>
+            
+          </div>
         
       </div>
     </article>
   </div>
 
 
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/61011741.github.io/page/2/#board">2</a><a class="extend next" rel="next" href="/61011741.github.io/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
 
 
 
