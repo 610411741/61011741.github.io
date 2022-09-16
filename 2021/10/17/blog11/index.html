@@ -19,7 +19,7 @@
     <meta name="description" content="首先看下以下两种业务情况：  如果有订单一直处于未支付状态时，如何及时的关闭订单，并且退还库存？ 创建新店铺时，很多天未上传商品，系统如何知道该情况，并发送激活短信？上述场景最简单直接的解决方案是定时扫表。我们假设 30分钟未支付则关闭订单、定时任务设置为 5 分钟一次，那么一个订单最晚会在 30分钟关闭。高达 5 分钟的误差是业务难以接受的。另一方面频繁的扫表可能消耗过多数据库资源，影响线上交易">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis延迟队列">
-<meta property="og:url" content="https://610411741.github.io/tl.github.io/2021/10/17/blog11/index.html">
+<meta property="og:url" content="https://github.com/610411741/61011741.github.io/2021/10/17/blog11/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="首先看下以下两种业务情况：  如果有订单一直处于未支付状态时，如何及时的关闭订单，并且退还库存？ 创建新店铺时，很多天未上传商品，系统如何知道该情况，并发送激活短信？上述场景最简单直接的解决方案是定时扫表。我们假设 30分钟未支付则关闭订单、定时任务设置为 5 分钟一次，那么一个订单最晚会在 30分钟关闭。高达 5 分钟的误差是业务难以接受的。另一方面频繁的扫表可能消耗过多数据库资源，影响线上交易">
 <meta property="og:locale" content="en_US">
@@ -69,7 +69,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"610411741.github.io","root":"/61011741.github.io/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/61011741.github.io/local-search.xml"};
+    var CONFIG = {"hostname":"github.com","root":"/61011741.github.io/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/61011741.github.io/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -305,7 +305,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Redis延迟队列</div>
-      <div>https://610411741.github.io/tl.github.io/2021/10/17/blog11/</div>
+      <div>https://github.com/610411741/61011741.github.io/2021/10/17/blog11/</div>
     </div>
     <div class="license-meta">
       
